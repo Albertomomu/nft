@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, SafeAreaView, Image, StatusBar, FlatList } from 'react-native'
 
-import { COLORS, SIZES, SHADOWS, assets } from '../constants'
+import { COLORS, SIZES, FONTS, SHADOWS, assets } from '../constants'
 import  { CircleButton, RectButton, SubInfo, FocusedStatusBar, DetailsDesc, DetailsBid } from '../components'
 
 const DetailsHeader = ({ data, navigation }) => (
@@ -31,7 +31,7 @@ const Details = ({ route, navigation }) => {
   const { data } = route.params;
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
       <FocusedStatusBar 
         backgroundColor="transparent"
         barStyle="dark-content"
@@ -62,6 +62,16 @@ const Details = ({ route, navigation }) => {
             <SubInfo />
             <View style={{ padding: SIZES.font }}>
               <DetailsDesc data={data} />
+
+              {data.bids.length > 0 && (
+                <Text style={{
+                  fontSize: SIZES.font,
+                  fontFamily: FONTS.semibold,
+                  color: COLORS.primary
+                }}>
+                  Current bid
+                </Text>
+              )}
             </View>
           </React.Fragment>
         )}
